@@ -26,7 +26,15 @@ class EmployeeController extends Controller {
 
 		// submit the form
 		if ($model->load(Yii::$app->request->post()) && $model->validate()) {
-			// code...
+			$employee = new Employee();
+			$employee['name'] = $model['name'];
+			$employee['job'] = $model['job'];
+			$employee['salary'] = $model['salary'];
+
+			$employee->save();
+
+			return $this->redirect('all-employees');
+
 		}
 
 		// display the form
