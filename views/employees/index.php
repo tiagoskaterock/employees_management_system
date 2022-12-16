@@ -1,4 +1,6 @@
-<a href="/employee/form" class="btn btn-primary" title="New Employee">
+<?php use yii\helpers\Url ?>
+
+<a href="<?= Url::to(['employee/create']) ?>" class="btn btn-primary" title="New Employee">
 	<i class="fas fa-plus"></i>
 	New
 </a>
@@ -23,7 +25,7 @@
 			<td><?php echo $employee['job'] ?></td>
 			<td>$ <?php echo $employee['salary'] ?></td>
 			<td>
-				<a href="/employee/form?id=<?= $employee['id'] ?>" class="btn btn-sm btn-primary" title="Edit <?= $employee['name'] ?>">
+				<a href="<?= Url::to(['employee/edit', 'id' => $employee['id']]) ?>" class="btn btn-sm btn-primary" title="Edit <?= $employee['name'] ?>">
 					<i class="fas fa-edit"></i>
 				</a>
 			</td>

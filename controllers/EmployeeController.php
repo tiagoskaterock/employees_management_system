@@ -21,7 +21,7 @@ class EmployeeController extends Controller {
 
 	}
 
-	public function actionForm() {
+	public function actionCreate() {
 		$model = new EmployeeForm();
 
 		// submit the form
@@ -43,6 +43,10 @@ class EmployeeController extends Controller {
 				'model' => $model
 			]);
 		}
+	}
+
+	public function actionEdit() {
+
 	}
 
 }
