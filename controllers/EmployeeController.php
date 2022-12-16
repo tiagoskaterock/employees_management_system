@@ -7,6 +7,7 @@ use yii\web\Controller;
 use yii\web\Response;
 use yii\filters\AccessControl;
 use app\models\Employee;
+use app\models\EmployeeForm;
 
 class EmployeeController extends Controller {
 
@@ -18,6 +19,22 @@ class EmployeeController extends Controller {
 			'employees' => $employees
 		]);
 
+	}
+
+	public function actionForm() {
+		$model = new EmployeeForm();
+
+		// submit the form
+		if ($model->load(Yii::$app->request->post()) && $model->validate()) {
+			// code...
+		}
+
+		// display the form
+		else{
+			return $this->render('/employees/form', [
+				'model' => $model
+			]);
+		}
 	}
 
 }

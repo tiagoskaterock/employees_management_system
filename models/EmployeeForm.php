@@ -15,6 +15,6 @@ class EmployeeForm extends Model {
 		return [
 			[ ['name', 'job', 'salary'], 'required'],
 			[ 'salary', 'number'],
-		]
+		];
 	}
 }
