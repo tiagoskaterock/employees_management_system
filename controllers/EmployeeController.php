@@ -27,9 +27,9 @@ class EmployeeController extends Controller {
 		// submit the form
 		if ($model->load(Yii::$app->request->post()) && $model->validate()) {
 			$employee = new Employee();
-			$employee['name'] = $model['name'];
-			$employee['job'] = $model['job'];
-			$employee['salary'] = $model['salary'];
+			$employee->name = $model['name'];
+			$employee->job = $model['job'];
+			$employee->salary = $model['salary'];
 
 			$employee->save();
 
@@ -47,16 +47,27 @@ class EmployeeController extends Controller {
 
 	public function actionEdit($id) {
 
+		$employee = Employee::findOne($id);
 		$model = new EmployeeForm();
 
 		// submit the form
-		if ($model->load(Yii::$app->request->post() && $model->validate)) {
-			// code...
+		if ($model->load(Yii::$app->request->post()) && $model->validate()) {
+
+			$employee->name = $model['name'];
+			$employee->job = $model['job'];
+			$employee->salary = $model['salary'];
+
+			$employee->save();
+
+			return $this->redirect('all-employees');
 		}
 
 		// display the form
 		else {
-			return $this->render('/employees/form', ['model' => $model]);
+			return $this->render('/employees/form', [
+				'model' => $model,
+				'employee' => $employee,
+			]);
 		}
 
 	}
