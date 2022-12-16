@@ -45,7 +45,19 @@ class EmployeeController extends Controller {
 		}
 	}
 
-	public function actionEdit() {
+	public function actionEdit($id) {
+
+		$model = new EmployeeForm();
+
+		// submit the form
+		if ($model->load(Yii::$app->request->post() && $model->validate)) {
+			// code...
+		}
+
+		// display the form
+		else {
+			return $this->render('/employees/form', ['model' => $model]);
+		}
 
 	}
 
